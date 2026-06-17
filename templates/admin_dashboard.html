@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Admin Dashboard | CityMate
+{% endblock %}
+
+{% block content %}
+
+<h1 class="fw-bold mb-4">
+    Admin Dashboard
+</h1>
+
+<!-- Statistics -->
+
+<div class="row mb-5">
+
+    <div class="col-md-6 mb-3">
+
+        <div class="stat-box bg-primary">
+
+            <h2>{{ total_users }}</h2>
+
+            <p>Total Users</p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6 mb-3">
+
+        <div class="stat-box bg-success">
+
+            <h2>{{ total_complaints }}</h2>
+
+            <p>Total Complaints</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Complaints Management -->
+
+<div class="card border-0 shadow-lg">
+
+    <div class="card-header bg-dark text-white">
+
+        <h4 class="mb-0">
+            Complaint Management
+        </h4>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Update</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for complaint in complaints %}
+
+                    <tr>
+
+                        <td>
+                            {{ complaint.complaint_id }}
+                        </td>
+
+                        <td>
+                            {{ complaint.title }}
+                        </td>
+
+                        <td>
+                            {{ complaint.category }}
+                        </td>
+
+                        <td>
+
+                            <span class="badge bg-info">
+
+                                {{ complaint.status }}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <form
+                                action="/update_status/{{ complaint.id }}"
+                                method="POST">
+
+                                <div class="d-flex gap-2">
+
+                                    <select
+                                        name="status"
+                                        class="form-select">
+
+                                        <option>
+                                            Pending
+                                        </option>
+
+                                        <option>
+                                            In Progress
+                                        </option>
+
+                                        <option>
+                                            Resolved
+                                        </option>
+
+                                    </select>
+
+                                    <button
+                                        class="btn btn-success">
+
+                                        Update
+
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+.stat-box{
+    color:white;
+    text-align:center;
+    padding:30px;
+    border-radius:20px;
+}
+
+.stat-box h2{
+    font-size:40px;
+    font-weight:700;
+}
+
+</style>
+
+{% endblock %}

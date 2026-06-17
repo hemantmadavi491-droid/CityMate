@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+
+{% block title %}
+CityMate | Smart City Guide
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+
+<section class="hero-section text-center text-white">
+
+    <div class="hero-overlay">
+
+        <h1 class="display-4 fw-bold">
+            Welcome to CityMate
+        </h1>
+
+        <p class="lead mt-3">
+            Your Smart City Guide & Public Complaint Platform
+        </p>
+
+        <div class="mt-4">
+
+            <a href="/services" class="btn btn-light btn-lg me-3">
+                Explore Services
+            </a>
+
+            <a href="/complaint" class="btn btn-success btn-lg">
+                File Complaint
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Quick Services -->
+
+<section class="mt-5">
+
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold">
+            City Services
+        </h2>
+
+        <p class="text-muted">
+            Access important public services instantly
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="card service-card text-center">
+                <div class="card-body">
+                    <i class="fas fa-hospital fa-3x text-primary mb-3"></i>
+                    <h5>Hospitals</h5>
+                    <p>Find nearby hospitals and emergency services.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card service-card text-center">
+                <div class="card-body">
+                    <i class="fas fa-shield-alt fa-3x text-danger mb-3"></i>
+                    <h5>Police Station</h5>
+                    <p>Access police station information and support.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card service-card text-center">
+                <div class="card-body">
+                    <i class="fas fa-school fa-3x text-success mb-3"></i>
+                    <h5>Schools</h5>
+                    <p>Locate schools and educational facilities.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card service-card text-center">
+                <div class="card-body">
+                    <i class="fas fa-bus fa-3x text-warning mb-3"></i>
+                    <h5>Bus Stand</h5>
+                    <p>View public transportation locations.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card service-card text-center">
+                <div class="card-body">
+                    <i class="fas fa-map-marker-alt fa-3x text-info mb-3"></i>
+                    <h5>Tourist Places</h5>
+                    <p>Explore attractions around the city.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card service-card text-center">
+                <div class="card-body">
+                    <i class="fas fa-bolt fa-3x text-secondary mb-3"></i>
+                    <h5>Emergency</h5>
+                    <p>Quick access to emergency contacts.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Statistics -->
+
+<section class="mt-5">
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+            <div class="card stat-card text-center">
+                <div class="card-body">
+                    <h2>100+</h2>
+                    <p>Public Services</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card stat-card text-center">
+                <div class="card-body">
+                    <h2>500+</h2>
+                    <p>Complaints Solved</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card stat-card text-center">
+                <div class="card-body">
+                    <h2>50+</h2>
+                    <p>City Updates</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card stat-card text-center">
+                <div class="card-body">
+                    <h2>10K+</h2>
+                    <p>Citizens Served</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Announcements -->
+
+<section class="mt-5">
+
+    <div class="text-center mb-4">
+
+        <h2 class="fw-bold">
+            Latest Announcements
+        </h2>
+
+    </div>
+
+    <div class="row">
+
+        {% for announcement in announcements %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card announcement-card h-100">
+
+                <div class="card-body">
+
+                    <h5>
+                        {{ announcement.title }}
+                    </h5>
+
+                    <p>
+                        {{ announcement.message }}
+                    </p>
+
+                    <small class="text-muted">
+                        {{ announcement.created_at.strftime('%d-%m-%Y') }}
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<style>
+
+.hero-section{
+    background:linear-gradient(rgba(0,0,0,0.5),
+    rgba(0,0,0,0.5)),
+    url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df');
+    background-size:cover;
+    background-position:center;
+    border-radius:20px;
+    padding:120px 20px;
+}
+
+.service-card{
+    border:none;
+    border-radius:20px;
+    transition:0.4s;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+}
+
+.stat-card{
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:20px;
+}
+
+.announcement-card{
+    border:none;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+</style>
+
+{% endblock %}

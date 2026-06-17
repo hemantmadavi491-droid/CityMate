@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Complaint Details | CityMate
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card complaint-detail-card border-0">
+
+            <div class="card-header bg-primary text-white text-center py-4">
+
+                <h2>
+                    <i class="fas fa-file-alt"></i>
+                    Complaint Details
+                </h2>
+
+            </div>
+
+            <div class="card-body p-4">
+
+                <div class="row mb-4">
+
+                    <div class="col-md-6">
+
+                        <h6 class="text-muted">
+                            Complaint ID
+                        </h6>
+
+                        <h5>
+                            {{ complaint.complaint_id }}
+                        </h5>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <h6 class="text-muted">
+                            Category
+                        </h6>
+
+                        <h5>
+                            {{ complaint.category }}
+                        </h5>
+
+                    </div>
+
+                </div>
+
+                <hr>
+
+                <div class="mb-4">
+
+                    <h6 class="text-muted">
+                        Complaint Title
+                    </h6>
+
+                    <h4>
+                        {{ complaint.title }}
+                    </h4>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <h6 class="text-muted">
+                        Description
+                    </h6>
+
+                    <div class="description-box">
+
+                        {{ complaint.description }}
+
+                    </div>
+
+                </div>
+
+                <div class="mb-4">
+
+                    <h6 class="text-muted">
+                        Current Status
+                    </h6>
+
+                    {% if complaint.status == "Pending" %}
+
+                    <span class="badge bg-warning text-dark status-badge">
+                        Pending
+                    </span>
+
+                    {% elif complaint.status == "In Progress" %}
+
+                    <span class="badge bg-primary status-badge">
+                        In Progress
+                    </span>
+
+                    {% elif complaint.status == "Resolved" %}
+
+                    <span class="badge bg-success status-badge">
+                        Resolved
+                    </span>
+
+                    {% else %}
+
+                    <span class="badge bg-secondary status-badge">
+                        {{ complaint.status }}
+                    </span>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="mb-4">
+
+                    <h6 class="text-muted">
+                        Submitted On
+                    </h6>
+
+                    <h5>
+                        {{ complaint.created_at.strftime('%d %B %Y, %I:%M %p') }}
+                    </h5>
+
+                </div>
+
+                <!-- Status Timeline -->
+
+                <div class="timeline-section">
+
+                    <h5 class="mb-4">
+                        Complaint Progress
+                    </h5>
+
+                    <ul class="timeline">
+
+                        <li class="completed">
+                            Complaint Submitted
+                        </li>
+
+                        {% if complaint.status == "In Progress" or complaint.status == "Resolved" %}
+
+                        <li class="completed">
+                            Under Review
+                        </li>
+
+                        {% else %}
+
+                        <li>
+                            Under Review
+                        </li>
+
+                        {% endif %}
+
+                        {% if complaint.status == "Resolved" %}
+
+                        <li class="completed">
+                            Complaint Resolved
+                        </li>
+
+                        {% else %}
+
+                        <li>
+                            Complaint Resolved
+                        </li>
+
+                        {% endif %}
+
+                    </ul>
+
+                </div>
+
+                <div class="text-center mt-4">
+
+                    <a href="/complaints"
+                       class="btn btn-outline-primary">
+
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Complaints
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+.complaint-detail-card{
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+.description-box{
+    background:#f8f9fa;
+    padding:20px;
+    border-radius:15px;
+    border-left:5px solid #2563eb;
+}
+
+.status-badge{
+    font-size:16px;
+    padding:10px 15px;
+}
+
+.timeline{
+    list-style:none;
+    padding-left:0;
+}
+
+.timeline li{
+    padding:12px 20px;
+    margin-bottom:15px;
+    background:#f1f5f9;
+    border-radius:12px;
+    position:relative;
+    font-weight:500;
+}
+
+.timeline li.completed{
+    background:#d1fae5;
+    color:#065f46;
+    border-left:5px solid #10b981;
+}
+
+.card-header{
+    border-radius:25px 25px 0 0 !important;
+}
+
+</style>
+
+{% endblock %}

@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+
+{% block title %}
+City Services | CityMate
+{% endblock %}
+
+{% block content %}
+
+<div class="text-center mb-5">
+
+    <h1 class="fw-bold">
+        City Services
+    </h1>
+
+    <p class="text-muted">
+        Find important public services available in your city
+    </p>
+
+</div>
+
+<div class="row g-4">
+
+    <!-- Hospital -->
+
+    <div class="col-lg-4 col-md-6">
+
+        <div class="service-card">
+
+            <div class="icon-box bg-primary">
+                <i class="fas fa-hospital"></i>
+            </div>
+
+            <h4>Hospitals</h4>
+
+            <p>
+                Access nearby hospitals, clinics, and emergency medical services.
+            </p>
+
+            <button class="btn btn-primary">
+                View Details
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Police -->
+
+    <div class="col-lg-4 col-md-6">
+
+        <div class="service-card">
+
+            <div class="icon-box bg-danger">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+
+            <h4>Police Stations</h4>
+
+            <p>
+                Locate police stations and public safety services.
+            </p>
+
+            <button class="btn btn-danger">
+                View Details
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- School -->
+
+    <div class="col-lg-4 col-md-6">
+
+        <div class="service-card">
+
+            <div class="icon-box bg-success">
+                <i class="fas fa-school"></i>
+            </div>
+
+            <h4>Schools</h4>
+
+            <p>
+                Explore schools, colleges, and educational institutions.
+            </p>
+
+            <button class="btn btn-success">
+                View Details
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Bus Stand -->
+
+    <div class="col-lg-4 col-md-6">
+
+        <div class="service-card">
+
+            <div class="icon-box bg-warning">
+                <i class="fas fa-bus"></i>
+            </div>
+
+            <h4>Bus Stations</h4>
+
+            <p>
+                Find bus routes, stations, and transport information.
+            </p>
+
+            <button class="btn btn-warning">
+                View Details
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Tourist Places -->
+
+    <div class="col-lg-4 col-md-6">
+
+        <div class="service-card">
+
+            <div class="icon-box bg-info">
+                <i class="fas fa-map-marked-alt"></i>
+            </div>
+
+            <h4>Tourist Places</h4>
+
+            <p>
+                Discover attractions and popular city destinations.
+            </p>
+
+            <button class="btn btn-info text-white">
+                View Details
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Emergency -->
+
+    <div class="col-lg-4 col-md-6">
+
+        <div class="service-card">
+
+            <div class="icon-box bg-dark">
+                <i class="fas fa-phone-alt"></i>
+            </div>
+
+            <h4>Emergency Contacts</h4>
+
+            <p>
+                Quick access to emergency helplines and services.
+            </p>
+
+            <button class="btn btn-dark">
+                View Details
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Emergency Numbers -->
+
+<div class="card mt-5 border-0 shadow-lg">
+
+    <div class="card-body">
+
+        <h3 class="mb-4">
+            Emergency Helpline Numbers
+        </h3>
+
+        <div class="row">
+
+            <div class="col-md-4 mb-3">
+
+                <div class="alert alert-danger">
+
+                    🚔 Police: <strong>100</strong>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mb-3">
+
+                <div class="alert alert-success">
+
+                    🚑 Ambulance: <strong>108</strong>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 mb-3">
+
+                <div class="alert alert-warning">
+
+                    🔥 Fire Brigade: <strong>101</strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+.service-card{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    height:100%;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+}
+
+.icon-box{
+    width:80px;
+    height:80px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.service-card h4{
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.service-card p{
+    color:#666;
+    margin-bottom:20px;
+}
+
+</style>
+
+{% endblock %}

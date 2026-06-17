@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Complaint Tracking | CityMate
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+        <h2 class="fw-bold">
+            Complaint Tracking
+        </h2>
+
+        <p class="text-muted">
+            View and track submitted complaints
+        </p>
+    </div>
+
+    <a href="/complaint" class="btn btn-primary">
+        <i class="fas fa-plus"></i>
+        New Complaint
+    </a>
+
+</div>
+
+<!-- Search Box -->
+
+<div class="card border-0 shadow-sm mb-4">
+
+    <div class="card-body">
+
+        <input
+            type="text"
+            id="searchInput"
+            class="form-control"
+            placeholder="Search Complaint ID, Title or Category...">
+
+    </div>
+
+</div>
+
+<!-- Complaints Table -->
+
+<div class="card border-0 shadow-lg">
+
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle" id="complaintTable">
+
+                <thead class="table-primary">
+
+                    <tr>
+                        <th>Complaint ID</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for complaint in complaints %}
+
+                    <tr>
+
+                        <td>
+                            <strong>
+                                {{ complaint.complaint_id }}
+                            </strong>
+                        </td>
+
+                        <td>
+                            {{ complaint.title }}
+                        </td>
+
+                        <td>
+                            {{ complaint.category }}
+                        </td>
+
+                        <td>
+
+                            {% if complaint.status == "Pending" %}
+
+                            <span class="badge bg-warning text-dark">
+                                Pending
+                            </span>
+
+                            {% elif complaint.status == "In Progress" %}
+
+                            <span class="badge bg-primary">
+                                In Progress
+                            </span>
+
+                            {% elif complaint.status == "Resolved" %}
+
+                            <span class="badge bg-success">
+                                Resolved
+                            </span>
+
+                            {% else %}
+
+                            <span class="badge bg-secondary">
+                                {{ complaint.status }}
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+                            {{ complaint.created_at.strftime('%d-%m-%Y') }}
+                        </td>
+
+                        <td>
+
+                            <a href="/complaint/{{ complaint.id }}"
+                               class="btn btn-sm btn-outline-primary">
+
+                                View
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.getElementById("searchInput").addEventListener("keyup", function() {
+
+    let filter = this.value.toLowerCase();
+
+    let rows = document.querySelectorAll("#complaintTable tbody tr");
+
+    rows.forEach(row => {
+
+        let text = row.textContent.toLowerCase();
+
+        row.style.display =
+            text.includes(filter) ? "" : "none";
+
+    });
+
+});
+
+</script>
+
+<style>
+
+.table{
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.badge{
+    padding:8px 12px;
+    font-size:14px;
+}
+
+.card{
+    border-radius:20px;
+}
+
+</style>
+
+{% endblock %}

@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Announcements | CityMate
+{% endblock %}
+
+{% block content %}
+
+<div class="text-center mb-5">
+
+    <h1 class="fw-bold">
+        <i class="fas fa-bullhorn text-primary"></i>
+        City Announcements
+    </h1>
+
+    <p class="text-muted">
+        Stay updated with the latest city news, events, and public notices.
+    </p>
+
+</div>
+
+{% if announcements %}
+
+<div class="row">
+
+    {% for announcement in announcements %}
+
+    <div class="col-lg-4 col-md-6 mb-4">
+
+        <div class="announcement-card h-100">
+
+            <div class="announcement-header">
+
+                <i class="fas fa-newspaper"></i>
+
+            </div>
+
+            <div class="announcement-body">
+
+                <h4>
+                    {{ announcement.title }}
+                </h4>
+
+                <p>
+                    {{ announcement.message }}
+                </p>
+
+            </div>
+
+            <div class="announcement-footer">
+
+                <small>
+
+                    <i class="fas fa-calendar-alt"></i>
+
+                    {{ announcement.created_at.strftime('%d %B %Y') }}
+
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="text-center">
+
+    <div class="empty-box">
+
+        <i class="fas fa-bullhorn fa-4x text-muted mb-3"></i>
+
+        <h3>
+            No Announcements Available
+        </h3>
+
+        <p class="text-muted">
+            New city announcements will appear here.
+        </p>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+<style>
+
+.announcement-card{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+    transition:0.4s;
+    height:100%;
+}
+
+.announcement-card:hover{
+    transform:translateY(-8px);
+}
+
+.announcement-header{
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    text-align:center;
+    padding:25px;
+    font-size:35px;
+}
+
+.announcement-body{
+    padding:25px;
+}
+
+.announcement-body h4{
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.announcement-body p{
+    color:#555;
+    line-height:1.7;
+}
+
+.announcement-footer{
+    padding:15px 25px;
+    background:#f8fafc;
+    color:#64748b;
+    border-top:1px solid #e2e8f0;
+}
+
+.empty-box{
+    background:white;
+    padding:50px;
+    border-radius:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+</style>
+
+{% endblock %}

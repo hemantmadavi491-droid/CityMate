@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Search Services | CityMate
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center mb-4">
+    Search Services Across India
+</h1>
+
+<div class="card p-4 shadow border-0">
+
+    <form method="POST">
+
+        <div class="row">
+
+            <div class="col-md-5">
+                <input
+                    type="text"
+                    name="city"
+                    class="form-control"
+                    placeholder="Enter City Name"
+                    required>
+            </div>
+
+            <div class="col-md-5">
+
+                <select
+                    name="category"
+                    class="form-select"
+                    required>
+
+                    <option>Hospital</option>
+                    <option>Police Station</option>
+                    <option>School</option>
+                    <option>Bus Station</option>
+                    <option>Tourist Place</option>
+
+                </select>
+
+            </div>
+
+            <div class="col-md-2">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary w-100">
+
+                    Search
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% if error %}
+
+<div class="alert alert-danger mt-4">
+    {{ error }}
+</div>
+
+{% endif %}
+
+{% if results %}
+
+<div class="row mt-4">
+
+{% for place in results %}
+
+<div class="col-md-6 mb-4">
+
+    <div class="card shadow-sm border-0 h-100">
+
+        <div class="card-body">
+
+            <h5 class="card-title">
+                {{ place.display_name }}
+            </h5>
+
+            <p>
+                Latitude:
+                {{ place.lat }}
+            </p>
+
+            <p>
+                Longitude:
+                {{ place.lon }}
+            </p>
+
+            <a
+              href="https://www.google.com/maps?q={{ place.lat }},{{ place.lon }}"
+              target="_blank"
+              class="btn btn-success">
+
+              Open Map
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endif %}
+
+{% endblock %}
