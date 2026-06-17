@@ -7,9 +7,9 @@ The platform combines a Smart City Guide with a Public Complaint Management Syst
 ---
 ## 🌐 Live Demo
 
-👉 [Open CityMate Live](https://your-app-url.onrender.com)
+👉 [Open CityMate Live]([https://your-app-url.onrender.com](https://citymate-ri45.onrender.com))
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)](https://your-app-url.onrender.com)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge)]https://citymate-ri45.onrender.com
 
 ### 🛠️ Smart City Services
 <img width="1891" height="913" alt="Screenshot 2026-06-17 114042" src="https://github.com/user-attachments/assets/16abdbde-541c-4716-9df8-e93b6f81673a" />
